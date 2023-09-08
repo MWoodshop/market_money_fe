@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Market Money Fe</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <header id="header">
+      <nav class="links" style="--items: 3;">
+        <a href="<%= root_path %>">Home</a>
+        <a href="<%= markets_path %>">Markets</a>
+        <a href="#">Vendors</a>
+        <span class="line"></span>
+      </nav>
+    </header>
+    <div class="app-title">
+      <h1>Market Money</h1>
+    </div>
+    <%= yield %>
+  </body>
+</html>
