@@ -2,16 +2,22 @@ class MarketsController < ApplicationController
   include HTTParty
   base_uri 'http://localhost:3000/api/v0'
 
+  # MarketsController
   def index
     response = self.class.get('/markets')
-    raw_markets = JSON.parse(response.body)
-    @markets = if raw_markets['data']
-                 raw_markets['data'].map do |market_data|
-                   market_data['attributes'].merge('id' => market_data['id'])
+
+    if response.code == 200
+      raw_markets = JSON.parse(response.body)
+      @markets = if raw_markets['data']
+                   raw_markets['data'].map do |market_data|
+                     market_data['attributes'].merge('id' => market_data['id'])
+                   end
+                 else
+                   []
                  end
-               else
-                 []
-               end
+    else
+      @error_message = 'Unable to fetch markets'
+    end
   end
 
   def show
