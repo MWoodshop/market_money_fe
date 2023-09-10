@@ -13,10 +13,10 @@
       <tbody>
         <% @markets.each do |market| %>
           <tr class="tr">
-            <td class="td1"><%= market.name %></td>
-            <td class="td1"><%= market.city %></td>
-            <td class="td1"><%= market.state %></td>
-            <td class="td1"><%= button_to "More Info", market_path(market), method: :get, class: "button-8" %></td>
+            <td class="td1"><%= market['name'] %></td>
+            <td class="td1"><%= market['city'] %></td>
+            <td class="td1"><%= market['state'] %></td>
+            <td class="td1"><%= button_to "More Info", market_path(market['id']), method: :get, class: "button-8" %></td>
           </tr>
         <% end %>
       </tbody>
