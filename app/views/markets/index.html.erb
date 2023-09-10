@@ -1,25 +1,29 @@
 <div class="content">
   <h1 class="page-title">Markets</h1>
-  <div class="table-container">
-    <table class="table">
-      <thead>
-        <tr class="tr">
-          <th class="th1">Name</th>
-          <th class="th1">City</th>
-          <th class="th1">State</th>
-          <th class="th1"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @markets.each do |market| %>
+  <% if @error_message %>
+    <p class="error-message"><%= @error_message %></p>
+  <% else %>
+    <div class="table-container">
+      <table class="table">
+        <thead>
           <tr class="tr">
-            <td class="td1"><%= market['name'] %></td>
-            <td class="td1"><%= market['city'] %></td>
-            <td class="td1"><%= market['state'] %></td>
-            <td class="td1"><%= button_to "More Info", market_path(market['id']), method: :get, class: "button-8" %></td>
+            <th class="th1">Name</th>
+            <th class="th1">City</th>
+            <th class="th1">State</th>
+            <th class="th1"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @markets.each do |market| %>
+            <tr class="tr">
+              <td class="td1"><%= market['name'] %></td>
+              <td class="td1"><%= market['city'] %></td>
+              <td class="td1"><%= market['state'] %></td>
+              <td class="td1"><%= button_to "More Info", market_path(market['id']), method: :get, class: "button-8" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 </div>
