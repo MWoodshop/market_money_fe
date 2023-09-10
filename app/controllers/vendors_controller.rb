@@ -2,10 +2,6 @@ class VendorsController < ApplicationController
   include HTTParty
   base_uri 'http://localhost:3000/api/v0'
 
-  def index
-    @vendors = Vendor.all
-  end
-
   def show
     response = self.class.get("/vendors/#{params[:id]}")
     if response.code == 200
